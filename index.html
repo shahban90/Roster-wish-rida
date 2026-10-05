@@ -3,75 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Rida ❤️ 19 — Shahban Ali</title>
+<title>Rida ❤️ | Locked Birthday Surprise</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-html{scroll-behavior:smooth}
+html{
+    scroll-behavior:smooth;
+}
 
 body{
     font-family:Poppins,sans-serif;
-    background:#10060c;
-    color:#fff;
+    background:#0c050a;
+    color:white;
     overflow-x:hidden;
 }
 
-button,input{font-family:inherit}
-
-body:before,
-body:after{
-    content:"";
-    position:fixed;
-    width:420px;
-    height:420px;
-    border-radius:50%;
-    filter:blur(150px);
-    pointer-events:none;
-    z-index:-1;
-}
-
-body:before{
-    background:#ff2874;
-    opacity:.12;
-    top:-180px;
-    left:-150px;
-}
-
-body:after{
-    background:#8d35ff;
-    opacity:.08;
-    right:-180px;
-    bottom:-150px;
-}
-
-/* ================= LOCK ================= */
+/* =====================================================
+   LOCK SCREEN
+===================================================== */
 
 #lockScreen{
     position:fixed;
     inset:0;
-    z-index:99999;
+    z-index:999999;
+
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
+
     padding:20px;
+
     background:
-        radial-gradient(circle at 50% 35%,#741a43,#290a1c 48%,#10060c 85%);
-    transition:opacity .8s,visibility .8s;
+        radial-gradient(circle at 50% 35%,
+        #681638 0%,
+        #280a1b 45%,
+        #0c050a 90%);
+
+    overflow:hidden;
+}
+
+#lockScreen::before,
+#lockScreen::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    pointer-events:none;
+    filter:blur(100px);
+}
+
+#lockScreen::before{
+    width:300px;
+    height:300px;
+    background:#ff2d75;
+    opacity:.15;
+    top:-120px;
+    left:-100px;
+}
+
+#lockScreen::after{
+    width:350px;
+    height:350px;
+    background:#8d35ff;
+    opacity:.1;
+    bottom:-160px;
+    right:-130px;
 }
 
 .lock-card{
-    width:min(390px,100%);
+    width:min(410px,100%);
+    position:relative;
+    z-index:2;
+
     padding:35px 25px;
+
     text-align:center;
+
     border-radius:30px;
-    background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.14);
-    backdrop-filter:blur(22px);
-    box-shadow:0 30px 100px #0009;
-    animation:lockIn .9s cubic-bezier(.2,.8,.2,1);
+
+    background:rgba(255,255,255,.065);
+    border:1px solid rgba(255,255,255,.13);
+
+    backdrop-filter:blur(25px);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.75),
+        0 0 70px rgba(255,40,110,.08);
+
+    animation:lockIn 1s cubic-bezier(.2,.8,.2,1);
 }
 
 @keyframes lockIn{
@@ -81,71 +106,151 @@ body:after{
     }
     to{
         opacity:1;
-        transform:none;
+        transform:translateY(0) scale(1);
     }
 }
 
 .lock-icon{
-    width:82px;
-    height:82px;
-    margin:auto;
+    width:88px;
+    height:88px;
+
+    margin:0 auto 18px;
+
     display:grid;
     place-items:center;
+
     border-radius:50%;
-    font-size:36px;
-    background:linear-gradient(135deg,#ff3479,#ff8aaf);
-    box-shadow:0 0 40px #ff347866;
-    animation:pulse 2s infinite;
+
+    font-size:38px;
+
+    background:
+        linear-gradient(135deg,#ff2e73,#ff8bae);
+
+    box-shadow:
+        0 0 35px rgba(255,46,115,.5);
+
+    animation:lockPulse 2s infinite;
 }
 
-@keyframes pulse{
-    50%{transform:scale(1.07)}
+@keyframes lockPulse{
+    50%{
+        transform:scale(1.08);
+        box-shadow:0 0 60px rgba(255,46,115,.35);
+    }
 }
 
 .lock-card h1{
     font-family:"Great Vibes",cursive;
-    font-size:58px;
+    font-size:60px;
     font-weight:400;
     color:#ff9fbd;
-    margin-top:15px;
 }
 
-.lock-card p{
-    color:#d9b5c2;
+.lock-card .small-text{
+    margin-top:5px;
+    color:#d8b3c1;
     font-size:13px;
     line-height:1.7;
-    margin:5px 0 20px;
+}
+
+/* COUNTDOWN */
+
+.countdown-title{
+    margin-top:25px;
+    color:#ffe1ea;
+    font-size:13px;
+}
+
+.countdown{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:12px;
+}
+
+.time{
+    padding:12px 5px;
+    border-radius:14px;
+
+    background:#ffffff08;
+    border:1px solid #ffffff10;
+}
+
+.time strong{
+    display:block;
+    color:#ff83a9;
+    font-size:22px;
+}
+
+.time span{
+    font-size:8px;
+    letter-spacing:1px;
+    color:#ad929f;
+}
+
+/* PASSWORD AREA */
+
+.password-area{
+    margin-top:22px;
+}
+
+.password-label{
+    display:block;
+    color:#c9a8b6;
+    font-size:12px;
+    margin-bottom:8px;
 }
 
 .password{
     width:100%;
+
     padding:15px;
+
+    border:1px solid #ffffff18;
     border-radius:15px;
-    border:1px solid #ffffff1c;
+
     outline:none;
-    background:#ffffff0d;
-    color:#fff;
+
+    background:#ffffff0b;
+
+    color:white;
+
     text-align:center;
+
     font-size:20px;
+
     letter-spacing:8px;
+
+    transition:.3s;
 }
 
 .password:focus{
-    border-color:#ff578d;
+    border-color:#ff4f87;
     box-shadow:0 0 20px #ff347833;
 }
 
 .unlock{
     width:100%;
-    margin-top:13px;
+
+    margin-top:12px;
+
     padding:14px;
+
     border:0;
     border-radius:15px;
-    background:linear-gradient(135deg,#ff286f,#ff82a9);
-    color:#fff;
+
+    background:
+        linear-gradient(135deg,#ff286f,#ff82a9);
+
+    color:white;
+
+    font-size:15px;
     font-weight:700;
+
     cursor:pointer;
-    box-shadow:0 10px 30px #ff286f44;
+
+    box-shadow:0 12px 30px #ff286f44;
+
     transition:.3s;
 }
 
@@ -153,11 +258,20 @@ body:after{
     transform:translateY(-3px);
 }
 
-.wrong{
+.unlock:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+    transform:none;
+    box-shadow:none;
+}
+
+.lock-message{
     min-height:48px;
-    padding-top:12px;
-    color:#ff9bb8;
-    font-size:13px;
+    margin-top:12px;
+
+    color:#ff9db8;
+
+    font-size:12px;
     line-height:1.5;
 }
 
@@ -172,91 +286,13 @@ body:after{
     80%{transform:translateX(5px)}
 }
 
-/* ================= MAIN ================= */
+/* =====================================================
+   WEBSITE
+===================================================== */
 
 #main{
     display:none;
 }
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:30px 20px;
-    position:relative;
-    overflow:hidden;
-    background:
-        radial-gradient(circle at center,#681638 0,#2d0b1b 45%,#10060c 82%);
-}
-
-.hero-content{
-    max-width:900px;
-    position:relative;
-    z-index:2;
-}
-
-.badge{
-    display:inline-block;
-    padding:9px 18px;
-    border:1px solid #ffffff25;
-    border-radius:50px;
-    background:#ffffff0c;
-    color:#ffb5ca;
-    font-size:12px;
-    letter-spacing:2px;
-}
-
-.hero h1{
-    font-family:"Great Vibes",cursive;
-    font-weight:400;
-    font-size:clamp(78px,16vw,155px);
-    line-height:.82;
-    margin:25px 0;
-    text-shadow:0 0 25px #ff3479,0 0 65px #ff347955;
-    animation:heroGlow 2.5s infinite alternate;
-}
-
-@keyframes heroGlow{
-    to{
-        text-shadow:0 0 40px #ff3479,0 0 100px #ff347977;
-    }
-}
-
-.hero-text{
-    font-size:clamp(17px,3vw,23px);
-    color:#ffe1ea;
-    line-height:1.7;
-}
-
-.hero-text b{color:#ff6e9c}
-
-.from{
-    color:#d4aebb;
-    margin-top:10px;
-    font-size:14px;
-}
-
-.btn{
-    border:0;
-    border-radius:50px;
-    padding:15px 27px;
-    margin-top:25px;
-    background:linear-gradient(135deg,#ff286f,#ff82aa);
-    color:#fff;
-    font-size:15px;
-    font-weight:700;
-    cursor:pointer;
-    box-shadow:0 12px 35px #ff286f55;
-    transition:.3s;
-}
-
-.btn:hover{
-    transform:translateY(-4px) scale(1.03);
-}
-
-/* ================= COMMON ================= */
 
 section{
     position:relative;
@@ -268,87 +304,193 @@ section{
     margin:auto;
 }
 
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:30px 20px;
+
+    background:
+        radial-gradient(circle at center,
+        #681638 0,
+        #2d0b1b 45%,
+        #10060c 85%);
+
+    overflow:hidden;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.badge{
+    display:inline-block;
+
+    padding:9px 18px;
+
+    border:1px solid #ffffff25;
+    border-radius:50px;
+
+    background:#ffffff0b;
+
+    color:#ffb5ca;
+
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.hero h1{
+    font-family:"Great Vibes",cursive;
+
+    font-size:clamp(75px,16vw,155px);
+
+    font-weight:400;
+
+    line-height:.82;
+
+    margin:25px 0;
+
+    color:white;
+
+    text-shadow:
+        0 0 25px #ff3479,
+        0 0 70px #ff347955;
+
+    animation:heroGlow 2.5s infinite alternate;
+}
+
+@keyframes heroGlow{
+    to{
+        text-shadow:
+            0 0 40px #ff3479,
+            0 0 100px #ff347977;
+    }
+}
+
+.hero-text{
+    color:#ffe1ea;
+    font-size:20px;
+    line-height:1.7;
+}
+
+.hero-text b{
+    color:#ff6e9c;
+}
+
+.from{
+    color:#d4aebb;
+    font-size:14px;
+    margin-top:10px;
+}
+
+.btn{
+    border:0;
+    border-radius:50px;
+
+    padding:15px 28px;
+
+    margin-top:25px;
+
+    background:
+        linear-gradient(135deg,#ff286f,#ff82aa);
+
+    color:white;
+
+    font-size:15px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    box-shadow:0 12px 35px #ff286f55;
+
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-4px) scale(1.03);
+}
+
 .title{
     font-family:"Great Vibes",cursive;
-    font-size:63px;
-    font-weight:400;
+
     text-align:center;
+
+    font-size:63px;
+
+    font-weight:400;
+
     color:#ff95b7;
 }
 
 .subtitle{
     text-align:center;
+
     color:#c9a9b6;
+
     margin:8px 0 40px;
 }
 
 .card{
     padding:35px;
+
     border-radius:30px;
+
     background:#ffffff09;
+
     border:1px solid #ffffff12;
+
     backdrop-filter:blur(15px);
+
     box-shadow:0 25px 80px #0006;
 }
 
-/* ================= COUNTDOWN ================= */
-
-.countdown{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-    max-width:650px;
-    margin:30px auto 0;
-}
-
-.time-box{
-    padding:18px 10px;
-    border-radius:18px;
-    background:#ffffff09;
-    border:1px solid #ffffff12;
-}
-
-.time-box strong{
-    display:block;
-    font-size:28px;
-    color:#ff8eaf;
-}
-
-.time-box span{
-    font-size:10px;
-    letter-spacing:2px;
-    color:#bda2ae;
-}
-
-/* ================= ROAST ================= */
+/* ROAST */
 
 .message{
     text-align:center;
+
     color:#ffe6ee;
+
     line-height:2;
+
     font-size:17px;
 }
 
-.message b{color:#ff6c9c}
+.message b{
+    color:#ff6c9c;
+}
 
 .roast-grid{
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:18px;
+
     margin-top:22px;
 }
 
 .roast-card{
     padding:25px;
-    border-radius:23px;
+
     text-align:center;
+
+    border-radius:23px;
+
     background:#ffffff08;
+
     border:1px solid #ffffff10;
+
     transition:.3s;
 }
 
 .roast-card:hover{
-    transform:translateY(-7px) rotate(-1deg);
+    transform:translateY(-7px);
     background:#ff347811;
 }
 
@@ -358,16 +500,19 @@ section{
 
 .roast-card h3{
     margin:10px 0;
+
     color:#ff8eaf;
 }
 
 .roast-card p{
     color:#c5a8b4;
+
     font-size:13px;
+
     line-height:1.7;
 }
 
-/* ================= GAME ================= */
+/* GAME */
 
 .game-section{
     background:#170810;
@@ -375,211 +520,367 @@ section{
 
 .score{
     text-align:center;
-    margin-bottom:15px;
+
     color:#ffd1df;
+
+    margin-bottom:15px;
 }
 
-.score b{color:#ff6798}
+.score b{
+    color:#ff6798;
+}
 
 .game{
     height:380px;
+
     position:relative;
+
     overflow:hidden;
+
     border-radius:28px;
-    background:radial-gradient(circle,#54162f,#200914);
+
+    background:
+        radial-gradient(circle,#54162f,#200914);
+
     border:1px solid #ffffff13;
+
     box-shadow:inset 0 0 80px #0009;
 }
 
 .heart{
     width:70px;
     height:70px;
+
     position:absolute;
+
     border:0;
+
     border-radius:50%;
+
     display:grid;
     place-items:center;
-    background:linear-gradient(135deg,#ff9bbc,#ff3178);
-    box-shadow:0 0 28px #ff3178,0 0 60px #ff317855;
+
+    background:
+        linear-gradient(135deg,#ff9bbc,#ff3178);
+
+    box-shadow:
+        0 0 28px #ff3178,
+        0 0 60px #ff317855;
+
     font-size:32px;
+
     cursor:pointer;
+
     animation:beat 1s infinite;
 }
 
 @keyframes beat{
-    50%{transform:scale(1.15)}
+    50%{
+        transform:scale(1.15);
+    }
 }
 
 .game-message{
     min-height:30px;
+
     text-align:center;
+
     margin-top:18px;
+
     color:#ffd0de;
 }
 
-/* ================= LOVE ================= */
+/* LOVE */
 
 .love{
-    background:radial-gradient(circle at center,#3e1026,#10060c 75%);
+    background:
+        radial-gradient(circle at center,
+        #3e1026,
+        #10060c 75%);
 }
 
 .love-message{
     text-align:center;
+
     font-size:17px;
+
     line-height:2;
+
     color:#ffe2eb;
 }
 
 .big-heart{
     font-size:70px;
+
     margin-bottom:10px;
+
     animation:heartBeat 1.3s infinite;
 }
 
 @keyframes heartBeat{
-    50%{transform:scale(1.12)}
+    50%{
+        transform:scale(1.12);
+    }
 }
 
-/* ================= FINAL ================= */
+/* FINAL */
 
 .final{
     min-height:100vh;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     text-align:center;
-    background:radial-gradient(circle at center,#661637,#250a18 48%,#10060c 85%);
+
+    background:
+        radial-gradient(circle at center,
+        #661637,
+        #250a18 48%,
+        #10060c 85%);
 }
 
 .final h2{
     font-family:"Great Vibes",cursive;
+
     font-size:clamp(75px,13vw,125px);
+
     font-weight:400;
+
     color:#ff9fbd;
+
     text-shadow:0 0 50px #ff3478;
 }
 
 .final-text{
     max-width:700px;
+
     margin:20px auto;
+
     color:#ffe1e9;
+
     line-height:2;
+
     font-size:17px;
 }
 
 .signature{
     font-family:"Great Vibes",cursive;
+
     font-size:48px;
+
     margin-top:30px;
 }
 
 #finalMessage{
     min-height:40px;
+
     margin-top:20px;
+
     color:#ffd0df;
 }
 
-/* ================= FLOATING ================= */
+/* FLOATING */
 
 #floating{
     position:fixed;
+
     inset:0;
+
     pointer-events:none;
+
     overflow:hidden;
+
     z-index:50;
 }
 
 .float{
     position:absolute;
+
     bottom:-40px;
+
     animation:floatUp linear forwards;
 }
 
 @keyframes floatUp{
     to{
-        transform:translateY(-110vh) rotate(360deg);
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
         opacity:0;
     }
 }
 
-/* ================= CONFETTI ================= */
+/* CONFETTI */
 
 .confetti{
     position:fixed;
+
     top:-20px;
+
     width:9px;
     height:14px;
+
     z-index:999999;
+
     animation:fall 3.5s linear forwards;
 }
 
 @keyframes fall{
     to{
-        transform:translateY(110vh) rotate(720deg);
+        transform:
+            translateY(110vh)
+            rotate(720deg);
     }
 }
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 
 @media(max-width:700px){
 
-    section{padding:70px 15px}
-
-    .title{font-size:55px}
-
-    .card{padding:25px 18px}
-
-    .roast-grid{grid-template-columns:1fr}
-
-    .countdown{
-        grid-template-columns:repeat(2,1fr);
+    .lock-card{
+        padding:30px 20px;
     }
 
-    .game{height:330px}
+    .lock-card h1{
+        font-size:52px;
+    }
 
+    .countdown{
+        gap:6px;
+    }
+
+    .time strong{
+        font-size:19px;
+    }
+
+    .title{
+        font-size:55px;
+    }
+
+    section{
+        padding:70px 15px;
+    }
+
+    .card{
+        padding:25px 18px;
+    }
+
+    .roast-grid{
+        grid-template-columns:1fr;
+    }
+
+    .game{
+        height:330px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= LOCK SCREEN ================= -->
+
+<!-- =====================================================
+     LOCK SCREEN
+===================================================== -->
 
 <div id="lockScreen">
 
     <div class="lock-card" id="lockCard">
 
-        <div class="lock-icon">🔐</div>
+        <div class="lock-icon">
+            🔐
+        </div>
 
-        <h1>Private ❤️</h1>
+        <h1>
+            Rida's Secret ❤️
+        </h1>
 
-        <p>
-            Sirf Rida ke liye...
+        <p class="small-text">
+            Ye surprise sirf birthday ke din khulega...
             <br>
-            Password daalo, Chabal 😂
+            Abhi sab kuch locked hai 🔒
         </p>
 
-        <input
-            id="password"
-            class="password"
-            type="password"
-            maxlength="10"
-            placeholder="•••"
-            autocomplete="off"
-        >
 
-        <button class="unlock" onclick="unlock()">
-            Unlock ❤️
-        </button>
+        <!-- COUNTDOWN -->
 
-        <div id="wrong" class="wrong"></div>
+        <div class="countdown-title">
+            🔒 Unlocks on 6 October
+        </div>
+
+        <div class="countdown">
+
+            <div class="time">
+                <strong id="days">00</strong>
+                <span>DAYS</span>
+            </div>
+
+            <div class="time">
+                <strong id="hours">00</strong>
+                <span>HOURS</span>
+            </div>
+
+            <div class="time">
+                <strong id="minutes">00</strong>
+                <span>MINUTES</span>
+            </div>
+
+            <div class="time">
+                <strong id="seconds">00</strong>
+                <span>SECONDS</span>
+            </div>
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="password-area">
+
+            <label class="password-label">
+                Birthday aa gaya? Password enter karo ❤️
+            </label>
+
+            <input
+                id="password"
+                class="password"
+                type="password"
+                maxlength="10"
+                placeholder="•••"
+                autocomplete="off"
+            >
+
+            <button
+                id="unlockButton"
+                class="unlock"
+                onclick="unlock()">
+
+                🔒 Locked
+
+            </button>
+
+            <div
+                id="lockMessage"
+                class="lock-message">
+
+            </div>
+
+        </div>
 
     </div>
 
 </div>
 
 
-<!-- ================= WEBSITE ================= -->
+<!-- =====================================================
+     MAIN WEBSITE
+     COMPLETELY HIDDEN UNTIL 6 OCTOBER
+===================================================== -->
 
 <div id="main">
 
@@ -602,62 +903,28 @@ Rida
 </h1>
 
 <p class="hero-text">
+
 Oye <b>Chabal</b> 😂❤️
+
 <br>
-19 ki hone wali ho...
+
+19 ki ho gayi ho...
 ab zara tameez bhi seekh lo.
+
 </p>
 
 <p class="from">
-A little surprise made with love by <b>Shahban Ali</b>
+A little surprise made with love by
+<b>Shahban Ali</b>
 </p>
 
-<button class="btn" onclick="scrollToId('birthday')">
+<button
+class="btn"
+onclick="scrollToId('roast')">
+
 Chal Dekh Tera Surprise 😂 ↓
+
 </button>
-
-</div>
-
-</section>
-
-
-<!-- BIRTHDAY COUNTDOWN -->
-
-<section id="birthday">
-
-<div class="container">
-
-<h2 class="title">
-6 October ❤️
-</h2>
-
-<p class="subtitle">
-Bas birthday tak ka intezar... 🎂
-</p>
-
-<div class="countdown">
-
-<div class="time-box">
-<strong id="days">00</strong>
-<span>DAYS</span>
-</div>
-
-<div class="time-box">
-<strong id="hours">00</strong>
-<span>HOURS</span>
-</div>
-
-<div class="time-box">
-<strong id="minutes">00</strong>
-<span>MINUTES</span>
-</div>
-
-<div class="time-box">
-<strong id="seconds">00</strong>
-<span>SECONDS</span>
-</div>
-
-</div>
 
 </div>
 
@@ -666,7 +933,7 @@ Bas birthday tak ka intezar... 🎂
 
 <!-- ROAST -->
 
-<section>
+<section id="roast">
 
 <div class="container">
 
@@ -687,7 +954,8 @@ Oye Rida... 👀
 <br>
 
 <p>
-6 October ko tum <b>19</b> ki ho jaogi. 🎂
+6 October ko tum
+<b>19</b> ki ho gayi. 🎂
 </p>
 
 <br>
@@ -721,9 +989,13 @@ meri favorite hain. 🥹❤️
 
 <div class="roast-card">
 
-<div class="emoji">🤡</div>
+<div class="emoji">
+🤡
+</div>
 
-<h3>Chabal Level</h3>
+<h3>
+Chabal Level
+</h3>
 
 <p>
 Normal Chabal nahi.
@@ -735,9 +1007,13 @@ Premium quality Chabal ho tum.
 
 <div class="roast-card">
 
-<div class="emoji">😂</div>
+<div class="emoji">
+😂
+</div>
 
-<h3>Batamezi Level</h3>
+<h3>
+Batamezi Level
+</h3>
 
 <p>
 Tameez tumse shayad
@@ -749,9 +1025,13 @@ address pooch kar bhi bhaag jaye.
 
 <div class="roast-card">
 
-<div class="emoji">❤️</div>
+<div class="emoji">
+❤️
+</div>
 
-<h3>Favorite Level</h3>
+<h3>
+Favorite Level
+</h3>
 
 <p>
 Roast bhi tumhari,
@@ -779,7 +1059,7 @@ Catch My Love ❤️
 </h2>
 
 <p class="subtitle">
-10 hearts pakro... phir asli surprise milega.
+10 hearts pakro... phir final surprise milega.
 </p>
 
 <div class="score">
@@ -793,13 +1073,20 @@ Hearts:
 class="heart"
 id="heart"
 onclick="catchHeart()">
+
 ❤️
+
 </button>
 
 </div>
 
-<div class="game-message" id="gameMessage">
-Oye Chabal, heart pakro... phone mat gira dena 😂
+<div
+class="game-message"
+id="gameMessage">
+
+Oye Chabal, heart pakro...
+phone mat gira dena 😂
+
 </div>
 
 </div>
@@ -911,8 +1198,12 @@ meri favorite Chabal. ❤️
 
 </p>
 
-<button class="btn" onclick="finalSurprise()">
+<button
+class="btn"
+onclick="finalSurprise()">
+
 Last Surprise 🎁
+
 </button>
 
 <div id="finalMessage"></div>
@@ -930,86 +1221,289 @@ Last Surprise 🎁
 
 <script>
 
-/* ================= PASSWORD ================= */
+/* =====================================================
+   IMPORTANT
+   =====================================================
+
+   Birthday:
+   6 October
+
+   Password:
+   257
+
+   Before 6 October:
+   - Main website stays completely hidden
+   - Password button stays locked
+   - Wrong password cannot reveal anything
+*/
+
 
 const PASSWORD = "257";
 
+
+/* =====================================================
+   DATE CHECK
+===================================================== */
+
+function isBirthday(){
+
+    const now = new Date();
+
+    const year = now.getFullYear();
+
+    /*
+       October = 9 because JavaScript months
+       start from 0.
+    */
+
+    const birthday =
+        new Date(year,9,6,0,0,0);
+
+    return now >= birthday;
+}
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+function updateCountdown(){
+
+    const now = new Date();
+
+    let year =
+        now.getFullYear();
+
+    let birthday =
+        new Date(year,9,6,0,0,0);
+
+    /*
+       Agar current year ka birthday
+       already pass ho gaya hai,
+       next year ka countdown.
+    */
+
+    if(now >= birthday){
+
+        document.getElementById("days")
+        .innerText="00";
+
+        document.getElementById("hours")
+        .innerText="00";
+
+        document.getElementById("minutes")
+        .innerText="00";
+
+        document.getElementById("seconds")
+        .innerText="00";
+
+        enableUnlock();
+
+        return;
+    }
+
+
+    const difference =
+        birthday-now;
+
+    const day =
+        1000*60*60*24;
+
+    const hour =
+        1000*60*60;
+
+    const minute =
+        1000*60;
+
+
+    const days =
+        Math.floor(difference/day);
+
+    const hours =
+        Math.floor((difference%day)/hour);
+
+    const minutes =
+        Math.floor((difference%hour)/minute);
+
+    const seconds =
+        Math.floor((difference%minute)/1000);
+
+
+    document.getElementById("days")
+        .innerText =
+        String(days).padStart(2,"0");
+
+    document.getElementById("hours")
+        .innerText =
+        String(hours).padStart(2,"0");
+
+    document.getElementById("minutes")
+        .innerText =
+        String(minutes).padStart(2,"0");
+
+    document.getElementById("seconds")
+        .innerText =
+        String(seconds).padStart(2,"0");
+
+
+    disableUnlock();
+}
+
+
+/* =====================================================
+   LOCK / UNLOCK BUTTON
+===================================================== */
+
+function disableUnlock(){
+
+    const button =
+        document.getElementById("unlockButton");
+
+    button.disabled=true;
+
+    button.innerHTML=
+        "🔒 Birthday Tak Locked";
+
+}
+
+
+function enableUnlock(){
+
+    const button =
+        document.getElementById("unlockButton");
+
+    button.disabled=false;
+
+    button.innerHTML=
+        "🔓 Unlock Birthday ❤️";
+
+}
+
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+
+/* =====================================================
+   WRONG PASSWORD ROASTS
+===================================================== */
+
 const roastReplies = [
 
-"Oye Chabal 😂 password bhi bhool gayi? Birthday tumhara hai, dimaagh ka nahi 😭",
+    "Oye Chabal 😂 abhi birthday nahi aaya, unlock nahi hoga.",
 
-"Galat password! 😂 Itni bhi Chabal mat bano... dobara try karo ❤️",
+    "257 sahi hai... lekin pehle 6 October aane do 😂❤️",
 
-"Haye Allah 😭 257 hai! Itna simple tha aur tumne phir bhi galat kar diya 😂",
+    "Hahaha 😂 itni jaldi kya hai? Surprise birthday tak locked hai.",
 
-"Oye Batamez 😂 lock kholna hai, NASA ka exam nahi dena.",
+    "Oye Batamez 😭 password bhi sahi daal do, lekin date ka wait bhi karo.",
 
-"Password galat hai madam 🤡 thora dimaagh use karo... jo bacha hai. 😂",
+    "Nice try Chabal 😂 abhi andar kuch nahi milega.",
 
-"Acha ji 😭 pehli attempt mein hi fail? 19 ki age mein ye haal hai 😂❤️",
+    "Birthday se pehle cheating? 😂❤️ Bilkul nahi.",
 
-"Chabal detected 🚨 Password wrong hai. Dobara socho 😂",
+    "Lock ko bhi pata hai tum Chabal ho 😂 isliye nahi khul raha.",
 
-"Tumse ye umeed nahi thi 😂❤️ Hint: 257. Ab sahi daalna.",
+    "6 October ka wait karo madam 😭❤️ phir poori website tumhari.",
 
-"Hahaha 😂 phir galat! Lagta hai birthday ke saath dimaagh bhi holiday pe hai.",
+    "Wrong time, Chabal 😂 surprise ko thora suspense do.",
 
-"Oye Rida 😭 password sahi daalo warna main aur roast karunga 😂❤️",
-
-"257 likhna tha Chabal 😭 calculator bhi tumse zyada samajhdaar hai 😂",
-
-"Galat! 😂 Itni cute ho isliye maaf kiya... ab sahi password daalo ❤️"
+    "Password 257 hai... magar birthday se pehle entry band hai 🔒😂"
 
 ];
 
-let wrongCount = 0;
+let wrongCount=0;
 
+
+/* =====================================================
+   UNLOCK
+===================================================== */
 
 function unlock(){
 
+    /*
+       Security check:
+       Date must be 6 October or later.
+    */
+
+    if(!isBirthday()){
+
+        const message =
+            document.getElementById("lockMessage");
+
+        message.innerHTML =
+            "🔒 Abhi birthday nahi aaya!<br>" +
+            "6 October ko dobara try karna ❤️";
+
+        const card =
+            document.getElementById("lockCard");
+
+        card.classList.remove("shake");
+
+        void card.offsetWidth;
+
+        card.classList.add("shake");
+
+        return;
+    }
+
+
     const input =
-    document.getElementById("password");
+        document.getElementById("password");
+
+    const message =
+        document.getElementById("lockMessage");
 
     const card =
-    document.getElementById("lockCard");
+        document.getElementById("lockCard");
 
-    const wrong =
-    document.getElementById("wrong");
 
     if(input.value === PASSWORD){
 
-        wrong.innerHTML =
-        "❤️ Welcome, birthday girl...";
+        message.innerHTML =
+            "❤️ Welcome, Birthday Girl...";
+
+
+        card.style.transition =
+            "1s ease";
 
         card.style.transform =
-        "scale(1.06)";
+            "scale(1.06)";
 
         card.style.opacity="0";
 
+
         document.getElementById("lockScreen")
-        .style.opacity="0";
+            .style.transition="opacity .9s";
+
+        document.getElementById("lockScreen")
+            .style.opacity="0";
+
 
         setTimeout(()=>{
 
             document.getElementById("lockScreen")
-            .style.display="none";
+                .style.display="none";
 
             document.getElementById("main")
-            .style.display="block";
+                .style.display="block";
 
             startFloating();
 
-        },800);
+        },900);
+
 
     }else{
 
         wrongCount++;
 
-        wrong.innerHTML =
-        roastReplies[
-            (wrongCount-1) %
-            roastReplies.length
-        ];
+        message.innerHTML =
+            roastReplies[
+                (wrongCount-1)
+                %
+                roastReplies.length
+            ];
 
         card.classList.remove("shake");
 
@@ -1020,98 +1514,51 @@ function unlock(){
         input.value="";
 
         input.focus();
+
     }
 
 }
 
 
-document.getElementById("password")
-.addEventListener("keydown",function(e){
+/* ENTER KEY */
 
-    if(e.key==="Enter"){
-        unlock();
+document
+.getElementById("password")
+.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key==="Enter"){
+            unlock();
+        }
+
     }
+);
 
-});
 
-
-/* ================= SCROLL ================= */
+/* =====================================================
+   SCROLL
+===================================================== */
 
 function scrollToId(id){
 
-    document.getElementById(id)
-    .scrollIntoView({
-        behavior:"smooth"
-    });
+    document
+        .getElementById(id)
+        .scrollIntoView({
+            behavior:"smooth"
+        });
 
 }
 
 
-/* ================= COUNTDOWN ================= */
-
-function updateCountdown(){
-
-    const now = new Date();
-
-    let year = now.getFullYear();
-
-    let birthday =
-    new Date(year,9,6,0,0,0);
-
-    if(now > birthday){
-        birthday =
-        new Date(year+1,9,6,0,0,0);
-    }
-
-    const difference =
-    birthday-now;
-
-    const day =
-    1000*60*60*24;
-
-    const hour =
-    1000*60*60;
-
-    const minute =
-    1000*60;
-
-    const days =
-    Math.floor(difference/day);
-
-    const hours =
-    Math.floor((difference%day)/hour);
-
-    const minutes =
-    Math.floor((difference%hour)/minute);
-
-    const seconds =
-    Math.floor((difference%minute)/1000);
-
-    document.getElementById("days")
-    .innerText=String(days).padStart(2,"0");
-
-    document.getElementById("hours")
-    .innerText=String(hours).padStart(2,"0");
-
-    document.getElementById("minutes")
-    .innerText=String(minutes).padStart(2,"0");
-
-    document.getElementById("seconds")
-    .innerText=String(seconds).padStart(2,"0");
-
-}
-
-updateCountdown();
-
-setInterval(updateCountdown,1000);
-
-
-/* ================= FLOATING ================= */
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
 
 function startFloating(){
 
-    const box =
-    document.getElementById("floating");
+    const container =
+        document.getElementById("floating");
 
     const emojis=[
         "❤️",
@@ -1124,30 +1571,34 @@ function startFloating(){
         "🥹"
     ];
 
+
     setInterval(()=>{
 
         const item =
-        document.createElement("div");
+            document.createElement("div");
 
         item.className="float";
 
         item.innerText =
-        emojis[
-            Math.floor(
-                Math.random()*emojis.length
-            )
-        ];
+            emojis[
+                Math.floor(
+                    Math.random()
+                    *
+                    emojis.length
+                )
+            ];
 
         item.style.left =
-        Math.random()*100+"vw";
+            Math.random()*100+"vw";
 
         item.style.fontSize =
-        (14+Math.random()*25)+"px";
+            (14+Math.random()*25)+"px";
 
         item.style.animationDuration =
-        (5+Math.random()*6)+"s";
+            (5+Math.random()*6)+"s";
 
-        box.appendChild(item);
+        container.appendChild(item);
+
 
         setTimeout(()=>{
             item.remove();
@@ -1158,32 +1609,44 @@ function startFloating(){
 }
 
 
-/* ================= GAME ================= */
+/* =====================================================
+   GAME
+===================================================== */
 
 let score=0;
 
 const game =
-document.getElementById("game");
+    document.getElementById("game");
 
 const heart =
-document.getElementById("heart");
+    document.getElementById("heart");
 
 const gameMessage =
-document.getElementById("gameMessage");
+    document.getElementById("gameMessage");
 
 
 function moveHeart(){
 
     const rect =
-    game.getBoundingClientRect();
+        game.getBoundingClientRect();
+
+    const maxX =
+        rect.width-80;
+
+    const maxY =
+        rect.height-80;
 
     heart.style.left =
-    Math.random()*
-    (rect.width-80)+"px";
+        Math.max(
+            5,
+            Math.random()*maxX
+        )+"px";
 
     heart.style.top =
-    Math.random()*
-    (rect.height-80)+"px";
+        Math.max(
+            5,
+            Math.random()*maxY
+        )+"px";
 
 }
 
@@ -1193,7 +1656,8 @@ function catchHeart(){
     score++;
 
     document.getElementById("score")
-    .innerText=score;
+        .innerText=score;
+
 
     const messages=[
 
@@ -1219,8 +1683,10 @@ function catchHeart(){
 
     ];
 
+
     gameMessage.innerText =
-    messages[score-1];
+        messages[score-1];
+
 
     if(score<10){
 
@@ -1230,17 +1696,22 @@ function catchHeart(){
 
         heart.style.display="none";
 
-        gameMessage.innerHTML =
-        "<strong>🎉 Game complete! Ab neeche asli surprise hai ❤️</strong>";
+        gameMessage.innerHTML=
+            "<strong>" +
+            "🎉 Game complete! " +
+            "Ab final surprise neeche hai ❤️" +
+            "</strong>";
 
         makeConfetti();
 
+
         setTimeout(()=>{
 
-            document.querySelector(".final")
-            .scrollIntoView({
-                behavior:"smooth"
-            });
+            document
+                .querySelector(".final")
+                .scrollIntoView({
+                    behavior:"smooth"
+                });
 
         },1200);
 
@@ -1248,55 +1719,63 @@ function catchHeart(){
 
 }
 
+
 moveHeart();
 
-window.addEventListener("resize",moveHeart);
+window.addEventListener(
+    "resize",
+    moveHeart
+);
 
 
-/* ================= FINAL SURPRISE ================= */
+/* =====================================================
+   FINAL SURPRISE
+===================================================== */
 
 function finalSurprise(){
 
     makeConfetti();
 
     document.getElementById("finalMessage")
-    .innerHTML=`
+        .innerHTML=`
 
-    <div style="
-        margin-top:25px;
-        font-size:21px;
-        line-height:1.8;
-    ">
+        <div style="
+            margin-top:25px;
+            font-size:21px;
+            line-height:1.8;
+        ">
 
-    😂❤️ Oye Rida...
+        😂❤️ Oye Rida...
 
-    <br>
+        <br>
 
-    Ab final baat:
+        Ab final baat:
 
-    <br>
+        <br>
 
-    <strong style="color:#ff6d9c">
-    I LOVE YOU,
-    meri favorite Chabal. ❤️
-    </strong>
+        <strong style="color:#ff6d9c">
+        I LOVE YOU,
+        meri favorite Chabal. ❤️
+        </strong>
 
-    <br>
+        <br>
 
-    Happy 19th Birthday! 🎂🥹❤️
+        Happy 19th Birthday! 🎂🥹❤️
 
-    <br>
+        <br>
 
-    Hamesha khush rehna. ❤️
+        Hamesha khush rehna. ❤️
 
-    </div>
+        </div>
 
     `;
 
 }
 
 
-/* ================= CONFETTI ================= */
+/* =====================================================
+   CONFETTI
+===================================================== */
 
 function makeConfetti(){
 
@@ -1304,32 +1783,36 @@ function makeConfetti(){
         "#ff3478",
         "#ff9fbd",
         "#ffd166",
-        "#fff",
+        "#ffffff",
         "#b892ff",
         "#8affc1"
     ];
 
+
     for(let i=0;i<120;i++){
 
         const c =
-        document.createElement("div");
+            document.createElement("div");
 
         c.className="confetti";
 
         c.style.left =
-        Math.random()*100+"vw";
+            Math.random()*100+"vw";
 
         c.style.background =
-        colors[
-            Math.floor(
-                Math.random()*colors.length
-            )
-        ];
+            colors[
+                Math.floor(
+                    Math.random()
+                    *
+                    colors.length
+                )
+            ];
 
         c.style.animationDelay =
-        Math.random()*1.4+"s";
+            Math.random()*1.4+"s";
 
         document.body.appendChild(c);
+
 
         setTimeout(()=>{
             c.remove();
